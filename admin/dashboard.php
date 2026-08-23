@@ -43,5 +43,3 @@ require __DIR__ . '/includes/header.php';
     </a>
 
 </div>
-
-<?php require __DIR__ . '/includes/footer.php'; ?>

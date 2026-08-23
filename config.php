@@ -1,4 +1,5 @@
 <?php
+
 /**
  * config.php — pusat pengaturan koneksi database.
  *
@@ -22,7 +23,8 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 // --------------------------------------------------------------------
 
-function getDbConnection(): PDO {
+function getDbConnection(): PDO
+{
 
     static $pdo = null;
     if ($pdo !== null) {
@@ -56,7 +58,8 @@ function getDbConnection(): PDO {
  * dan browser WAJIB ambil ulang versi baru -- tidak akan pernah lagi
  * "sudah diganti tapi browser masih nampilin yang lama" karena ke-cache.
  */
-function assetVersion(string $relativePath): string {
+function assetVersion(string $relativePath): string
+{
     $fullPath = __DIR__ . '/' . ltrim($relativePath, '/');
     return file_exists($fullPath) ? (string) filemtime($fullPath) : '1';
 }

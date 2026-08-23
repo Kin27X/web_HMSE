@@ -81,7 +81,7 @@ function renderGridItem(article){
 }
 
 function shareArticle(article){
-  const url = `${window.location.origin}${window.location.pathname.replace("news.php","")}news_detail.php?id=${article.id}`;
+  const url = `${window.location.origin}${window.location.pathname.replace("news.php","")}news.php?id=${article.id}`;
   if(navigator.share){
     navigator.share({ title: article.title, url }).catch(()=>{});
   }else if(navigator.clipboard){
@@ -90,7 +90,7 @@ function shareArticle(article){
 }
 
 function goToDetail(id){
-  window.location.href = `news_detail.php?id=${id}`;
+  window.location.href = `news.php?id=${id}`;
 }
 
 function renderPage(){

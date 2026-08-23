@@ -2,10 +2,11 @@
 require __DIR__ . '/../config.php';
 $pdo = getDbConnection();
 
-$hariIndo = [0=>'Minggu',1=>'Senin',2=>'Selasa',3=>'Rabu',4=>'Kamis',5=>'Jumat',6=>'Sabtu'];
-$bulanIndo = [1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+$hariIndo = [0 => 'Minggu', 1 => 'Senin', 2 => 'Selasa', 3 => 'Rabu', 4 => 'Kamis', 5 => 'Jumat', 6 => 'Sabtu'];
+$bulanIndo = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
-function makeExcerpt(string $html, int $len = 160): string {
+function makeExcerpt(string $html, int $len = 160): string
+{
     $text = trim(preg_replace('/\s+/', ' ', strip_tags($html)));
     return strlen($text) > $len ? substr($text, 0, $len) . '...' : $text;
 }
@@ -14,7 +15,7 @@ $rows = $pdo->query('SELECT * FROM news ORDER BY event_datetime DESC')->fetchAll
 
 $thumbStmt = $pdo->prepare('SELECT filename FROM news_photos WHERE news_id = ? ORDER BY sort_order ASC, id ASC LIMIT 1');
 
-$newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
+$newsArticles = array_map(function ($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
     $ts = strtotime($n['event_datetime']);
     $thumbStmt->execute([$n['id']]);
     $thumb = $thumbStmt->fetchColumn();
@@ -32,6 +33,7 @@ $newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +48,7 @@ $newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
 </head>
+
 <body>
 
     <header id="navbar">
@@ -69,19 +72,19 @@ $newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
                 <li class="nav-li"><a href="index.html">Home</a></li>
                 <li class="nav-li drop">
                     <div class="drop-btn">
-                      About
-                      <span class="material-icons dropdown-icon">
-                        arrow_drop_down
-                      </span>
+                        About
+                        <span class="material-icons dropdown-icon">
+                            arrow_drop_down
+                        </span>
                     </div>
 
                     <div class="dropdown">
-                      <ul class="dropdown-inner">
-                        <li><a href="visi_&amp;_misi.html">Visi & Misi</a></li>
-                        <li><a href="program-kerja.php">Program Kerja</a></li>
-                        <li><a href="event-schedule.php">Event Schedule</a></li>
-                        <li><a href="struktur.php">Struktur Organisasi</a></li>
-                      </ul>
+                        <ul class="dropdown-inner">
+                            <li><a href="visi_&amp;_misi.html">Visi & Misi</a></li>
+                            <li><a href="program-kerja.php">Program Kerja</a></li>
+                            <li><a href="event-schedule.php">Event Schedule</a></li>
+                            <li><a href="struktur.php">Struktur Organisasi</a></li>
+                        </ul>
                     </div>
 
                 </li>
@@ -159,7 +162,7 @@ $newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
     </section>
 
     <?php include __DIR__ . '/../admin/includes/footer.html'; ?>
-    
+
 
     <script>
         const newsArticles = <?= json_encode($newsArticles, JSON_UNESCAPED_UNICODE) ?>;
@@ -169,4 +172,5 @@ $newsArticles = array_map(function($n) use ($hariIndo, $bulanIndo, $thumbStmt) {
     <script src="../js/news.js?v=<?= assetVersion('js/news.js') ?>"></script>
 
 </body>
+
 </html>

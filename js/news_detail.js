@@ -72,7 +72,7 @@ function renderMorePosts(currentId){
   others.forEach(article=>{
     const a = document.createElement("a");
     a.className = "nd-more-item";
-    a.href = `news_detail.php?id=${article.id}`;
+    a.href = `news.php?id=${article.id}`;
     a.innerHTML = `
       <div class="nd-more-thumb">
         <img src="${article.thumbnail}" alt="${article.title}" loading="lazy">
