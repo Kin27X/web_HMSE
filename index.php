@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HMSE - Himpunan Mahasiswa Software Engineering</title>
-  <link rel="icon" type="image/png" href="images/logo2.png">
-  <link rel="apple-touch-icon" href="images/logo2.png">
+  <link rel="icon" type="image/webp" href="images/logo2.webp">
+  <link rel="apple-touch-icon" href="images/logo2.webp">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -24,14 +24,14 @@
       <div class="nav-bg-gray"></div>
 
       <div class="brand">
-        <img class="logo" src="images/logo2.png" alt="logo HMSE">
+        <img class="logo" src="images/logo2.webp" alt="logo HMSE">
         <span>HMSE</span>
       </div>
 
       <ul class="menu" id="menu">
         <li class="menu-header">
           <div class="brand">
-            <img class="logo" src="images/logo2.png" alt="logo HMSE">
+            <img class="logo" src="images/logo2.webp" alt="logo HMSE">
             <span>HMSE</span>
           </div>
           <span class="menu-close" id="menuClose" aria-label="Tutup menu">&times;</span>
@@ -58,14 +58,14 @@
         <li class="nav-li"><a href="gallery/">Gallery</a></li>
         <li class="nav-li"><a href="news/">News</a></li>
         <li class="nav-li mobile-btn">
-          <a class="btn" href="#"><button>Contact</button></a>
+          <!-- <a class="btn" href="#"><button>Contact</button></a> -->
         </li>
       </ul>
 
       <div class="nav-accent">
         <span class="accent-circle"></span>
         <div class="button">
-          <a class="btn" href="#"><button>Contact</button></a>
+          <!-- <a class="btn" href="#"><button>Contact</button></a> -->
         </div>
       </div>
 
@@ -82,12 +82,14 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="videos/26722-360259321_medium.mp4" type="video/mp4">
-    </video>
+    <img src="images/hero.webp" alt="HMSE">
 
     <div class="hero-text">
-      <h1>Kreasikan Idemu<br>dengan HMSE</h1>
+      <h1>Kreasikan Idemu<br>dengan HMSE</h1><br>
+      <h3 style="font-weight: normal;">
+        HIMPUNAN MAHASISWA SOFTWARE ENGINEERING</h3>
+      <h4 style="font-weight: normal;">
+        UNIVERSITAS INSAN PEMBANGUNAN INDONESIA</h4>
       <p>Berani Coba, Berani Gagal, Berani Sukses</p>
     </div>
   </section>
@@ -239,32 +241,7 @@
       <!-- Card 1 -->
       <div class="hero-card">
 
-        <img src="images/foto.jpg" alt="Olahraga" loading="lazy">
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-          <h3>Olahraga</h3>
-          <p>Ikuti kegiatan olahraga bersama HMSE</p>
-
-          <a href="html/olahraga.html">
-            <button class="hero-btn">
-              <span class="hero-btn-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="4" y1="12" x2="19" y2="12" />
-                  <polyline points="13 6 19 12 13 18" />
-                </svg>
-              </span>
-              <span class="hero-btn-text">Jelajahi</span>
-            </button>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="hero-card">
-
-        <img src="images/computer_1.jpg" alt="Belajar" loading="lazy">
+        <img src="images/home.webp" alt="Belajar" loading="lazy">
 
         <div class="hero-overlay"></div>
 
@@ -272,7 +249,7 @@
           <h3>Belajar</h3>
           <p>Belajar pemrograman bersama HMSE</p>
 
-          <a href="html/belajar.html">
+          <a href="learn/">
             <button class="hero-btn">
               <span class="hero-btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -287,10 +264,10 @@
 
       </div>
 
-      <!-- Card 3 -->
+      <!-- Card 2 -->
       <div class="hero-card">
 
-        <img src="images/Rama2.jpeg" alt="Event" loading="lazy">
+        <img src="images/placeholder.webp" alt="Event" loading="lazy">
 
         <div class="hero-overlay"></div>
 
@@ -298,7 +275,7 @@
           <h3>Event</h3>
           <p>Hadiri acara dan kegiatan HMSE</p>
 
-          <a href="html/event.html">
+          <a href="event/">
             <button class="hero-btn">
               <span class="hero-btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -311,6 +288,30 @@
           </a>
         </div>
 
+      </div>
+
+      <div class="hero-card">
+
+        <img src="images/placeholder.webp" alt="Olahraga" loading="lazy">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <h3>Olahraga</h3>
+          <p>Ikuti kegiatan olahraga bersama HMSE</p>
+
+          <a href="sport/">
+            <button class="hero-btn">
+              <span class="hero-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" y1="12" x2="19" y2="12" />
+                  <polyline points="13 6 19 12 13 18" />
+                </svg>
+              </span>
+              <span class="hero-btn-text">Jelajahi</span>
+            </button>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -342,13 +343,13 @@
       </div>
 
       <div class="history-img">
-        <img src="images/foto.jpg" alt="HMSE">
+        <img src="images/foto.webp" alt="HMSE">
       </div>
 
     </div>
   </section>
 
-  <section class="cta">
+  <!-- <section class="cta">
     <div class="cta-overlay"></div>
 
     <div class="cta-content reveal reveal-up">
@@ -362,7 +363,7 @@
       </a>
 
     </div>
-  </section>
+  </section> -->
 
   <section class="filosofi">
     <h2>Filosofi Logo HMSE</h2>
@@ -380,41 +381,41 @@
 
       <div class="hex-hub">
         <span class="hex-hub-shape"></span>
-        <img src="images/logo2.png" alt="Logo HMSE" class="hex-hub-logo">
+        <img src="images/logo2.webp" alt="Logo HMSE" class="hex-hub-logo">
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/gear.png" alt="Gear" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/gear.webp" alt="Gear" loading="lazy"></span>
         <h4>Gear</h4>
         <p>Semangat kerja & keberlanjutan.</p>
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/lamp.png" alt="Lampu" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/lamp.webp" alt="Lampu" loading="lazy"></span>
         <h4>Lampu</h4>
         <p>Sumber efisiensi & inovasi.</p>
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/code.png" alt="Kode" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/code.webp" alt="Kode" loading="lazy"></span>
         <h4>Kode</h4>
         <p>Progres berkelanjutan.</p>
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/book.png" alt="Buku" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/book.webp" alt="Buku" loading="lazy"></span>
         <h4>Buku</h4>
         <p>Sumber ilmu.</p>
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/computer_1.jpg" alt="Komputer" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/computer_1.webp" alt="Komputer" loading="lazy"></span>
         <h4>Komputer</h4>
         <p>Media pembelajaran.</p>
       </div>
 
       <div class="hex-item">
-        <span class="hex-icon-bg"><img src="images/grey.png" alt="Abu-abu" loading="lazy"></span>
+        <span class="hex-icon-bg"><img src="images/grey.webp" alt="Abu-abu" loading="lazy"></span>
         <h4>Abu-abu</h4>
         <p>Kestabilan & tanggung jawab.</p>
       </div>
@@ -487,7 +488,69 @@
     </div>
   </section>
 
-  <?php include __DIR__ . '/admin/includes/footer.html'; ?>
+  <footer class="hmse-footer">
+    <div class="footer-main">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <h3>HMSE</h3>
+        <p>
+          Berani Coba, Berani Gagal,<br>
+          Berani Sukses
+        </p>
+
+        <div class="footer-social">
+          <a href="https://www.tiktok.com/@hmse_unipi" aria-label="Tiktok HMSE"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/hmse_unipi?igsh=MTBvaW43MmluN2J1aw==" aria-label="Instagram HMSE"><i class="fa-brands fa-instagram"></i></a>
+          <!-- <a href="#" aria-label="YouTube HMSE"><i class="fa-brands fa-youtube"></i></a> -->
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+
+        <!-- <p>
+          <i class="material-icons">call</i>
+          +62 0812 xxxx xxxx
+        </p> -->
+
+        <p>
+          <i class="material-icons">email</i>
+          softwareengineering228@gmail.com
+        </p>
+      </div>
+
+      <!-- Maps -->
+      <div class="footer-maps">
+        <h4>Lokasi Kami</h4>
+        <div class="footer-maps-frame">
+          <iframe
+            loading="lazy"
+            src="https://maps.google.com/maps?q=-6.2243268,106.5683631&z=17&output=embed">
+          </iframe>
+        </div>
+        <a class="footer-maps-link" href="https://www.google.com/maps/place/SEKRET+HMSE+UNIPI/@-6.2243884,106.5671774,18.06z/data=!4m6!3m5!1s0x2e69ff0067f77447:0xd2739de9d0900f90!8m2!3d-6.2243268!4d106.5683631!16s%2Fg%2F11w9bsdjsm?hl=id-ID" target="_blank" rel="noopener">
+          Buka di Google Maps
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+
+      <p>© 2026 HMSE. All Rights Reserved.</p>
+
+      <div class="footer-links">
+        <!-- <a href="#">Terms & Condition</a> -->
+        <!-- <a href="admin/login.php" target="_blank">Admin</a> -->
+        <!-- <a href="#">Privacy Policy</a> -->
+      </div>
+
+    </div>
+  </footer>
 
   <script src="js/index.js"></script>
 

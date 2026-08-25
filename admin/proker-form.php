@@ -70,4 +70,3 @@ require __DIR__ . '/includes/header.php';
     </form>
 </div>
 
-<?php require __DIR__ . '/includes/footer.php'; ?>

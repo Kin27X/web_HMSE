@@ -9,23 +9,40 @@ $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 $error = '';
 
 $node = [
-    'name' => '', 'label' => '', 'npm' => '', 'semester' => '', 'nid' => '', 'masa_jabatan' => '',
-    'alamat' => '', 'instagram' => '', 'whatsapp' => '', 'email' => '', 'photo' => null, 'icon' => '',
-    'parent_id' => null, 'node_key' => null,
+    'name' => '',
+    'label' => '',
+    'npm' => '',
+    'semester' => '',
+    'nid' => '',
+    'masa_jabatan' => '',
+    'alamat' => '',
+    'instagram' => '',
+    'whatsapp' => '',
+    'email' => '',
+    'photo' => null,
+    'icon' => '',
+    'parent_id' => null,
+    'node_key' => null,
 ];
 
 if ($id) {
     $stmt = $pdo->prepare('SELECT * FROM struktur_nodes WHERE id = ?');
     $stmt->execute([$id]);
     $found = $stmt->fetch();
-    if (!$found) { header('Location: struktur-list.php'); exit; }
+    if (!$found) {
+        header('Location: struktur-list.php');
+        exit;
+    }
     $node = $found;
     $mode = $found['group_type'] ?: 'member'; // leader | branch | division | member
 } else {
     $mode = $_GET['type'] ?? 'member';
     if ($mode === 'member') {
         $node['parent_id'] = isset($_GET['parent_id']) ? (int)$_GET['parent_id'] : null;
-        if (!$node['parent_id']) { header('Location: struktur-list.php'); exit; }
+        if (!$node['parent_id']) {
+            header('Location: struktur-list.php');
+            exit;
+        }
     }
 }
 
@@ -68,7 +85,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([
                 $mode === 'member' ? $parentId : null,
                 $groupType,
-                $label, $name, $npm, $semester, $nid, $masaJabatan, $alamat, $instagram, $whatsapp, $email, $photo, $icon ?: null
+                $label,
+                $name,
+                $npm,
+                $semester,
+                $nid,
+                $masaJabatan,
+                $alamat,
+                $instagram,
+                $whatsapp,
+                $email,
+                $photo,
+                $icon ?: null
             ]);
         }
 
@@ -84,7 +112,9 @@ require __DIR__ . '/includes/header.php';
 ?>
 
 <div class="admin-breadcrumb"><a href="struktur-list.php">&larr; Kembali</a></div>
-<div class="admin-title-row"><h2><?= e($pageTitle) ?></h2></div>
+<div class="admin-title-row">
+    <h2><?= e($pageTitle) ?></h2>
+</div>
 
 <?php if ($error): ?><div class="flash flash-error"><?= e($error) ?></div><?php endif; ?>
 
@@ -171,5 +201,3 @@ require __DIR__ . '/includes/header.php';
         </div>
     </form>
 </div>
-
-<?php require __DIR__ . '/includes/footer.php'; ?>

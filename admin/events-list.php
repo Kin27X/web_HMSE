@@ -75,4 +75,3 @@ require __DIR__ . '/includes/header.php';
     </table>
 <?php endif; ?>
 
-<?php require __DIR__ . '/includes/footer.php'; ?>

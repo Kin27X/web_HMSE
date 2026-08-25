@@ -53,4 +53,3 @@ require __DIR__ . '/includes/header.php';
     <a href="dashboard.php" class="btn btn-back">Kembali</a>
 <?php endif; ?>
 
-<?php require __DIR__ . '/includes/footer.php'; ?>
