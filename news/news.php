@@ -11,6 +11,44 @@ function makeExcerpt(string $html, int $len = 160): string
   return strlen($text) > $len ? substr($text, 0, $len) . '...' : $text;
 }
 
+// 1. Ambil slug dari parameter URL (misal: detail.php?slug=nama-berita)
+$slug = $_GET['slug'] ?? '';
+$currentNews = null;
+
+if ($slug) {
+  $stmt = $pdo->prepare('SELECT * FROM news WHERE slug = ?');
+  $stmt->execute([$slug]);
+  $currentNews = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Fallback ke berita terbaru jika slug tidak ditemukan
+if (!$currentNews) {
+  $stmt = $pdo->query('SELECT * FROM news ORDER BY event_datetime DESC LIMIT 1');
+  $currentNews = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// 2. Siapkan data Open Graph (OG Tags) dengan URL Absolut
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http";
+$baseUrl = $protocol . '://' . $_SERVER['HTTP_HOST'];
+
+$ogTitle = $currentNews ? $currentNews['title'] : 'News - HMSE';
+$ogDescription = $currentNews ? makeExcerpt($currentNews['body_html'] ?? '', 160) : 'Berita terbaru dari HMSE.';
+$ogUrl = $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+// Ambil foto pertama untuk thumbnail OG Image
+$ogImage = $baseUrl . '/images/logo2.webp'; // Default fallback
+if ($currentNews) {
+  $photoStmt = $pdo->prepare('SELECT filename FROM news_photos WHERE news_id = ? ORDER BY sort_order ASC, id ASC LIMIT 1');
+  $photoStmt->execute([$currentNews['id']]);
+  $photo = $photoStmt->fetch(PDO::FETCH_COLUMN);
+
+  if ($photo) {
+    // Sesuaikan folder /images/ dengan letak folder gambar di public root Anda
+    $ogImage = $baseUrl . '/images/' . $photo;
+  }
+}
+
+// Data untuk list berita di bawah (sidebar & JS)
 $rows = $pdo->query('SELECT * FROM news ORDER BY event_datetime DESC')->fetchAll();
 $photoStmt = $pdo->prepare('SELECT filename FROM news_photos WHERE news_id = ? ORDER BY sort_order ASC, id ASC');
 
@@ -39,7 +77,15 @@ $newsArticles = array_map(function ($n) use ($hariIndo, $bulanIndo, $photoStmt) 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News - HMSE</title>
+
+  <!-- Open Graph Tags untuk WhatsApp & Social Media -->
+  <meta property="og:title" content="<?= htmlspecialchars($ogTitle, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:description" content="<?= htmlspecialchars($ogDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($ogImage, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:url" content="<?= htmlspecialchars($ogUrl, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:type" content="article">
+
+  <title><?= htmlspecialchars($ogTitle, ENT_QUOTES, 'UTF-8') ?> - HMSE</title>
   <link rel="icon" type="image/webp" href="../images/logo2.webp">
   <link rel="apple-touch-icon" href="../images/logo2.webp">
   <link rel="stylesheet" href="../css/style.css?v=<?= assetVersion('css/style.css') ?>">
